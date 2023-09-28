@@ -66,6 +66,13 @@ var require_antd = __commonJS({
   }
 });
 
+// external-global-plugin:@veramo-community/agent-explorer-plugin
+var require_agent_explorer_plugin = __commonJS({
+  "external-global-plugin:@veramo-community/agent-explorer-plugin"(exports, module) {
+    module.exports = window.agentexplorerplugin;
+  }
+});
+
 // node_modules/.pnpm/classnames@2.3.2/node_modules/classnames/index.js
 var require_classnames = __commonJS({
   "node_modules/.pnpm/classnames@2.3.2/node_modules/classnames/index.js"(exports, module) {
@@ -117,13 +124,6 @@ var require_classnames = __commonJS({
   }
 });
 
-// external-global-plugin:react/jsx-runtime
-var require_jsx_runtime = __commonJS({
-  "external-global-plugin:react/jsx-runtime"(exports, module) {
-    module.exports = window.reactjsxruntime;
-  }
-});
-
 // external-global-plugin:date-fns
 var require_date_fns = __commonJS({
   "external-global-plugin:date-fns"(exports, module) {
@@ -131,17 +131,24 @@ var require_date_fns = __commonJS({
   }
 });
 
+// external-global-plugin:react/jsx-runtime
+var require_jsx_runtime = __commonJS({
+  "external-global-plugin:react/jsx-runtime"(exports, module) {
+    module.exports = window.reactjsxruntime;
+  }
+});
+
 // src/Feed.tsx
 var import_react4 = __toESM(require_react(), 1);
-var import_react_router_dom2 = __toESM(require_react_router_dom(), 1);
+var import_react_router_dom = __toESM(require_react_router_dom(), 1);
 var import_react_query3 = __toESM(require_react_query(), 1);
-var import_veramo_react4 = __toESM(require_veramo_react(), 1);
+var import_veramo_react3 = __toESM(require_veramo_react(), 1);
 var import_pro_components = __toESM(require_pro_components(), 1);
-var import_antd4 = __toESM(require_antd(), 1);
+var import_antd3 = __toESM(require_antd(), 1);
 
 // src/GitcoinStamp.tsx
-var import_antd2 = __toESM(require_antd(), 1);
-var import_veramo_react2 = __toESM(require_veramo_react(), 1);
+var import_antd = __toESM(require_antd(), 1);
+var import_veramo_react = __toESM(require_veramo_react(), 1);
 var import_react_query = __toESM(require_react_query(), 1);
 
 // src/utils/did.ts
@@ -181,10 +188,8 @@ function getIssuerDID(credential) {
   }
 }
 
-// src/components/CredentialActionsDropdown.tsx
-var import_antd = __toESM(require_antd(), 1);
-var import_veramo_react = __toESM(require_veramo_react(), 1);
-var import_react_router_dom = __toESM(require_react_router_dom(), 1);
+// src/GitcoinStamp.tsx
+var import_agent_explorer_plugin = __toESM(require_agent_explorer_plugin(), 1);
 
 // node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/components/Context.js
 var import_react = __toESM(require_react());
@@ -1402,27 +1407,8 @@ if (true) {
 }
 var CloudDownloadOutlined_default2 = /* @__PURE__ */ React4.forwardRef(CloudDownloadOutlined2);
 
-// node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/DownloadOutlined.js
-var React5 = __toESM(require_react());
-
-// node_modules/.pnpm/@ant-design+icons-svg@4.3.1/node_modules/@ant-design/icons-svg/es/asn/DownloadOutlined.js
-var DownloadOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M505.7 661a8 8 0 0012.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z" } }] }, "name": "download", "theme": "outlined" };
-var DownloadOutlined_default = DownloadOutlined;
-
-// node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/DownloadOutlined.js
-var DownloadOutlined2 = function DownloadOutlined3(props, ref) {
-  return /* @__PURE__ */ React5.createElement(AntdIcon_default, _extends({}, props, {
-    ref,
-    icon: DownloadOutlined_default
-  }));
-};
-if (true) {
-  DownloadOutlined2.displayName = "DownloadOutlined";
-}
-var DownloadOutlined_default2 = /* @__PURE__ */ React5.forwardRef(DownloadOutlined2);
-
 // node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/EllipsisOutlined.js
-var React6 = __toESM(require_react());
+var React5 = __toESM(require_react());
 
 // node_modules/.pnpm/@ant-design+icons-svg@4.3.1/node_modules/@ant-design/icons-svg/es/asn/EllipsisOutlined.js
 var EllipsisOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z" } }] }, "name": "ellipsis", "theme": "outlined" };
@@ -1430,7 +1416,7 @@ var EllipsisOutlined_default = EllipsisOutlined;
 
 // node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/EllipsisOutlined.js
 var EllipsisOutlined2 = function EllipsisOutlined3(props, ref) {
-  return /* @__PURE__ */ React6.createElement(AntdIcon_default, _extends({}, props, {
+  return /* @__PURE__ */ React5.createElement(AntdIcon_default, _extends({}, props, {
     ref,
     icon: EllipsisOutlined_default
   }));
@@ -1438,147 +1424,7 @@ var EllipsisOutlined2 = function EllipsisOutlined3(props, ref) {
 if (true) {
   EllipsisOutlined2.displayName = "EllipsisOutlined";
 }
-var EllipsisOutlined_default2 = /* @__PURE__ */ React6.forwardRef(EllipsisOutlined2);
-
-// node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/InfoCircleOutlined.js
-var React7 = __toESM(require_react());
-
-// node_modules/.pnpm/@ant-design+icons-svg@4.3.1/node_modules/@ant-design/icons-svg/es/asn/InfoCircleOutlined.js
-var InfoCircleOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z" } }] }, "name": "info-circle", "theme": "outlined" };
-var InfoCircleOutlined_default = InfoCircleOutlined;
-
-// node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/InfoCircleOutlined.js
-var InfoCircleOutlined2 = function InfoCircleOutlined3(props, ref) {
-  return /* @__PURE__ */ React7.createElement(AntdIcon_default, _extends({}, props, {
-    ref,
-    icon: InfoCircleOutlined_default
-  }));
-};
-if (true) {
-  InfoCircleOutlined2.displayName = "InfoCircleOutlined";
-}
-var InfoCircleOutlined_default2 = /* @__PURE__ */ React7.forwardRef(InfoCircleOutlined2);
-
-// node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/PicLeftOutlined.js
-var React8 = __toESM(require_react());
-
-// node_modules/.pnpm/@ant-design+icons-svg@4.3.1/node_modules/@ant-design/icons-svg/es/asn/PicLeftOutlined.js
-var PicLeftOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M952 792H72c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h880c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0-632H72c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h880c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM608 660c8.8 0 16-7.2 16-16V380c0-8.8-7.2-16-16-16H96c-8.8 0-16 7.2-16 16v264c0 8.8 7.2 16 16 16h512zM152 436h400v152H152V436zm552 210c0 4.4 3.6 8 8 8h224c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H712c-4.4 0-8 3.6-8 8v56zm8-204h224c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H712c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8z" } }] }, "name": "pic-left", "theme": "outlined" };
-var PicLeftOutlined_default = PicLeftOutlined;
-
-// node_modules/.pnpm/@ant-design+icons@5.2.6_react-dom@18.2.0_react@18.2.0/node_modules/@ant-design/icons/es/icons/PicLeftOutlined.js
-var PicLeftOutlined2 = function PicLeftOutlined3(props, ref) {
-  return /* @__PURE__ */ React8.createElement(AntdIcon_default, _extends({}, props, {
-    ref,
-    icon: PicLeftOutlined_default
-  }));
-};
-if (true) {
-  PicLeftOutlined2.displayName = "PicLeftOutlined";
-}
-var PicLeftOutlined_default2 = /* @__PURE__ */ React8.forwardRef(PicLeftOutlined2);
-
-// src/components/CredentialActionsDropdown.tsx
-var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-var CredentialActionsDropdown = ({ children, credential }) => {
-  const { agents, getAgent } = (0, import_veramo_react.useVeramo)();
-  const navigate = (0, import_react_router_dom.useNavigate)();
-  const { notification } = import_antd.App.useApp();
-  const agentsToCopyTo = agents.filter(
-    (agent) => agent.availableMethods().includes("dataStoreSaveVerifiableCredential")
-  );
-  const handleCopyTo = async (agentId) => {
-    const agent = getAgent(agentId);
-    try {
-      await agent.dataStoreSaveVerifiableCredential({
-        verifiableCredential: credential
-      });
-      notification.success({
-        message: "Credential copied to: " + agent.context.name
-      });
-    } catch (e) {
-      notification.error({
-        message: "Error copying credential to: " + agent.context.name,
-        description: e.message
-      });
-    }
-  };
-  const handleCopyEmbed = () => {
-    let embed = "";
-    if (credential.proof?.jwt) {
-      embed = `\`\`\`vc+jwt
-${credential.proof.jwt}
-\`\`\``;
-    } else {
-      embed = `\`\`\`vc+json
-${JSON.stringify(credential, null, 2)}
-\`\`\``;
-    }
-    navigator.clipboard.writeText(embed);
-    notification.success({
-      message: "Credential embed copied to clipboard"
-    });
-  };
-  const handleDownload = () => {
-    const element = document.createElement("a");
-    const file = new Blob([JSON.stringify(credential, null, 2)], {
-      type: "text/plain"
-    });
-    element.href = URL.createObjectURL(file);
-    element.download = "verifiable-credential.json";
-    document.body.appendChild(element);
-    element.click();
-  };
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-    import_antd.Dropdown,
-    {
-      menu: {
-        items: [
-          {
-            key: "issuer",
-            label: "Issuer",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCircleOutlined_default2, {}),
-            onClick: () => navigate("/contacts/" + getIssuerDID(credential))
-          },
-          {
-            key: "subject",
-            label: "Subject",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoCircleOutlined_default2, {}),
-            onClick: () => navigate(
-              "/contacts/" + encodeURIComponent(credential.credentialSubject.id)
-            )
-          },
-          {
-            key: "download",
-            label: "Download",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DownloadOutlined_default2, {}),
-            onClick: handleDownload
-          },
-          {
-            key: "embed",
-            label: "Copy embed",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PicLeftOutlined_default2, {}),
-            onClick: handleCopyEmbed
-          },
-          {
-            key: "copy",
-            label: "Copy to",
-            type: "group",
-            children: agentsToCopyTo.map((_agent, index) => {
-              return {
-                key: index,
-                onClick: () => handleCopyTo(_agent.context?.id),
-                label: _agent.context?.name
-              };
-            })
-          }
-        ]
-      },
-      children
-    }
-  );
-};
-var CredentialActionsDropdown_default = CredentialActionsDropdown;
+var EllipsisOutlined_default2 = /* @__PURE__ */ React5.forwardRef(EllipsisOutlined2);
 
 // src/GitcoinStamp.tsx
 var import_date_fns = __toESM(require_date_fns(), 1);
@@ -1597,12 +1443,12 @@ var getStampsMetadata = async () => {
 };
 
 // src/GitcoinStamp.tsx
-var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 var GitcoinStamp = ({
   credential
 }) => {
-  const { agent } = (0, import_veramo_react2.useVeramo)();
-  const { token } = import_antd2.theme.useToken();
+  const { agent } = (0, import_veramo_react.useVeramo)();
+  const { token } = import_antd.theme.useToken();
   const did = getIssuerDID(credential.verifiableCredential);
   const { data, isLoading } = (0, import_react_query.useQuery)(
     ["identifierProfile", did, agent?.context.id],
@@ -1613,22 +1459,22 @@ var GitcoinStamp = ({
     () => getStampsMetadata()
   );
   const stamp = stampMetadata?.find((stamp2) => stamp2.id === credential.verifiableCredential.credentialSubject.provider);
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_jsx_runtime2.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_antd2.Row, { align: "top", wrap: false, style: {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_antd.Row, { align: "top", wrap: false, style: {
     width: "100%",
     borderTop: "1px solid " + token.colorBorderSecondary,
     padding: token.paddingSM,
     position: "relative"
   }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { style: { position: "absolute", top: 0, right: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(CredentialActionsDropdown_default, { credential: credential.verifiableCredential, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(EllipsisOutlined_default2, {}) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_antd2.Col, { style: { marginRight: token.padding }, children: [
-      !isLoading && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Avatar, { src: data?.picture, size: "large" }),
-      isLoading && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Skeleton.Avatar, { active: true })
+    /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { style: { position: "absolute", top: 0, right: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_agent_explorer_plugin.CredentialActionsDropdown, { uniqueCredential: credential, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EllipsisOutlined_default2, {}) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_antd.Col, { style: { marginRight: token.padding }, children: [
+      !isLoading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Avatar, { src: data?.picture, size: "large" }),
+      isLoading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Skeleton.Avatar, { active: true })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_antd2.Col, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { style: { justifyItems: "flex-start", display: "flex" }, children: [
-        !isLoading && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Popover, { content: shortId(did), children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_antd2.Space, { direction: "horizontal", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Typography.Text, { ellipsis: true, children: data?.name }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_antd.Col, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { style: { justifyItems: "flex-start", display: "flex" }, children: [
+        !isLoading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Popover, { content: shortId(did), children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_antd.Space, { direction: "horizontal", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Typography.Text, { ellipsis: true, children: data?.name }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
             "svg",
             {
               className: "veramo__verified_icon",
@@ -1636,26 +1482,26 @@ var GitcoinStamp = ({
               width: "12",
               height: "12",
               viewBox: "0 0 1200 1200",
-              children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("path", { d: "M600,1200a604.428,604.428,0,0,1-120.921-12.19,596.709,596.709,0,0,1-214.545-90.281A601.752,601.752,0,0,1,47.151,833.547,596.971,596.971,0,0,1,12.19,720.921a605.85,605.85,0,0,1,0-241.842A596.709,596.709,0,0,1,102.47,264.534,601.751,601.751,0,0,1,366.453,47.151,596.971,596.971,0,0,1,479.079,12.19a605.85,605.85,0,0,1,241.842,0A596.709,596.709,0,0,1,935.466,102.47a601.751,601.751,0,0,1,217.383,263.982,596.976,596.976,0,0,1,34.961,112.626,605.849,605.849,0,0,1,0,241.842,596.709,596.709,0,0,1-90.281,214.545,601.751,601.751,0,0,1-263.982,217.383,596.976,596.976,0,0,1-112.626,34.961A604.428,604.428,0,0,1,600,1200ZM233.818,499.972l340.917,545.086L967.272,283.377,574.734,684.509Z", fill: "#73c394" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M600,1200a604.428,604.428,0,0,1-120.921-12.19,596.709,596.709,0,0,1-214.545-90.281A601.752,601.752,0,0,1,47.151,833.547,596.971,596.971,0,0,1,12.19,720.921a605.85,605.85,0,0,1,0-241.842A596.709,596.709,0,0,1,102.47,264.534,601.751,601.751,0,0,1,366.453,47.151,596.971,596.971,0,0,1,479.079,12.19a605.85,605.85,0,0,1,241.842,0A596.709,596.709,0,0,1,935.466,102.47a601.751,601.751,0,0,1,217.383,263.982,596.976,596.976,0,0,1,34.961,112.626,605.849,605.849,0,0,1,0,241.842,596.709,596.709,0,0,1-90.281,214.545,601.751,601.751,0,0,1-263.982,217.383,596.976,596.976,0,0,1-112.626,34.961A604.428,604.428,0,0,1,600,1200ZM233.818,499.972l340.917,545.086L967.272,283.377,574.734,684.509Z", fill: "#73c394" })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Typography.Text, { type: "secondary", children: "\xB7" }),
-          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Typography.Text, { type: "secondary", children: (0, import_date_fns.formatRelative)(
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Typography.Text, { type: "secondary", children: "\xB7" }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Typography.Text, { type: "secondary", children: (0, import_date_fns.formatRelative)(
             new Date(credential.verifiableCredential.issuanceDate),
             /* @__PURE__ */ new Date()
           ) })
         ] }) }),
-        isLoading && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Skeleton.Input, { style: { width: 100 }, active: true })
+        isLoading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Skeleton.Input, { style: { width: 100 }, active: true })
       ] }),
-      stamp && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.List.Item, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-        import_antd2.List.Item.Meta,
+      stamp && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.List.Item, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        import_antd.List.Item.Meta,
         {
           title: stamp.name,
           description: stamp.description,
-          avatar: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_antd2.Avatar, { src: stamp.icon })
+          avatar: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_antd.Avatar, { src: stamp.icon })
         }
       ) }),
-      !stamp && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_antd2.Typography.Text, { type: "warning", children: [
+      !stamp && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_antd.Typography.Text, { type: "warning", children: [
         "Stamp metadata not found: ",
         credential.verifiableCredential.credentialSubject.provider
       ] })
@@ -1666,9 +1512,9 @@ var GitcoinStamp = ({
 // src/ImportStamps.tsx
 var import_react3 = __toESM(require_react(), 1);
 var import_react_query2 = __toESM(require_react_query(), 1);
-var import_veramo_react3 = __toESM(require_veramo_react(), 1);
-var import_antd3 = __toESM(require_antd(), 1);
-var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
+var import_veramo_react2 = __toESM(require_veramo_react(), 1);
+var import_antd2 = __toESM(require_antd(), 1);
+var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 var getAddressStamps = async (address, apiKey) => {
   const url = `https://api.scorer.gitcoin.co/registry/stamps/${address}`;
   const response = await fetch(url, {
@@ -1680,8 +1526,8 @@ var getAddressStamps = async (address, apiKey) => {
   return response.json();
 };
 var ImportStamps = () => {
-  const { notification } = import_antd3.App.useApp();
-  const { agent } = (0, import_veramo_react3.useVeramo)();
+  const { notification } = import_antd2.App.useApp();
+  const { agent } = (0, import_veramo_react2.useVeramo)();
   const [accounts, setAccounts] = (0, import_react3.useState)([]);
   const { data: contacts } = (0, import_react_query2.useQuery)(
     ["contacts", { agentId: agent?.context.name }],
@@ -1736,8 +1582,8 @@ var ImportStamps = () => {
       }
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-    import_antd3.Button,
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_jsx_runtime2.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+    import_antd2.Button,
     {
       onClick: handleImport,
       children: [
@@ -1750,12 +1596,12 @@ var ImportStamps = () => {
 };
 
 // src/Feed.tsx
-var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 var Feed = () => {
-  const { notification } = import_antd4.App.useApp();
+  const { notification } = import_antd3.App.useApp();
   const [drawerOpen, setDrawerOpen] = (0, import_react4.useState)(false);
-  const navigate = (0, import_react_router_dom2.useNavigate)();
-  const { agent } = (0, import_veramo_react4.useVeramo)();
+  const navigate = (0, import_react_router_dom.useNavigate)();
+  const { agent } = (0, import_veramo_react3.useVeramo)();
   const { data: credentials, isLoading, refetch } = (0, import_react_query3.useQuery)(
     ["gitcoin-passport", { agentId: agent?.context.name }],
     () => agent?.dataStoreORMGetVerifiableCredentials({
@@ -1763,14 +1609,14 @@ var Feed = () => {
       order: [{ column: "issuanceDate", direction: "DESC" }]
     })
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
     import_pro_components.PageContainer,
     {
       extra: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          import_antd4.Button,
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          import_antd3.Button,
           {
-            icon: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CloudDownloadOutlined_default2, {}),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(CloudDownloadOutlined_default2, {}),
             type: "primary",
             title: "Import stamps",
             onClick: () => setDrawerOpen(true),
@@ -1780,8 +1626,8 @@ var Feed = () => {
         )
       ],
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          import_antd4.List,
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          import_antd3.List,
           {
             itemLayout: "vertical",
             size: "large",
@@ -1789,7 +1635,7 @@ var Feed = () => {
               pageSize: 30
             },
             dataSource: credentials,
-            renderItem: (item) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            renderItem: (item) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
               GitcoinStamp,
               {
                 credential: item
@@ -1798,8 +1644,8 @@ var Feed = () => {
             )
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          import_antd4.Drawer,
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          import_antd3.Drawer,
           {
             title: "Import stamps",
             placement: "right",
@@ -1807,7 +1653,7 @@ var Feed = () => {
             open: drawerOpen,
             width: 800,
             destroyOnClose: true,
-            children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ImportStamps, {})
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ImportStamps, {})
           }
         )
       ]
@@ -1816,32 +1662,33 @@ var Feed = () => {
 };
 
 // src/Icon.tsx
-var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
 var Icon2 = () => {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("svg", { width: "13", height: "16", viewBox: "0 0 26 32", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M20.9761 12.5668C22.0114 14.018 22.5734 15.7801 22.5586 17.5571C22.5586 19.3044 21.9966 21.0518 20.9761 22.4733L23.1354 24.117C24.5108 22.2216 25.2651 19.9116 25.2651 17.5719C25.2799 15.099 24.4665 12.6705 22.9727 10.7158L21.7344 11.8321L20.9761 12.5668Z", fill: "#02E2AC" }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M25.0581 25.5733L17.7963 20.05C18.3139 19.3688 18.6097 18.5396 18.6541 17.6807C18.6837 16.8218 18.4618 15.9778 18.0034 15.2522L21.479 12.1129L25.1173 8.70708C25.3539 8.48496 25.3687 8.09995 25.1321 7.86303L24.6292 7.35956C22.041 4.73855 18.5506 3.21333 14.8827 3.09486L14.8975 1.09579C14.9123 0.962517 14.8975 0.829246 14.8679 0.695974C14.8235 0.562703 14.7644 0.444239 14.6756 0.340583C14.5869 0.236927 14.4834 0.162888 14.3503 0.103656C14.232 0.044424 14.0988 0.0148077 13.9657 0.0148077C13.8326 0.0148077 13.6995 0.044424 13.5812 0.103656C13.4629 0.162888 13.3446 0.236927 13.2558 0.340583C13.1671 0.444239 13.0931 0.562702 13.0636 0.681166C13.0192 0.814438 13.0044 0.947709 13.034 1.08098L13.0192 3.13929C12.1466 3.22814 11.274 3.39102 10.431 3.64276L10.4458 1.08098C10.4605 0.947709 10.4458 0.814438 10.4162 0.681166C10.3718 0.547894 10.3126 0.429431 10.2239 0.325775C10.1352 0.222119 10.0316 0.148079 9.89853 0.0888475C9.78021 0.0296157 9.6471 0 9.51399 0C9.38088 0 9.24777 0.0296157 9.12945 0.0888475C9.01114 0.148079 8.89282 0.222119 8.80408 0.325775C8.71534 0.429431 8.64139 0.547894 8.61181 0.666358C8.56744 0.79963 8.55265 0.932902 8.58223 1.06617L8.53786 4.33873C5.55031 5.67145 3.0952 7.9963 1.60142 10.9135C0.107648 13.8306 -0.365626 17.1772 0.285127 20.3906C0.93588 23.6039 2.66629 26.5062 5.18057 28.609C7.69484 30.7117 10.8599 31.8963 14.1284 31.9556L24.7032 32C25.0285 32 25.2948 31.7335 25.2948 31.4077V26.062C25.2948 25.8695 25.206 25.6918 25.0581 25.5733ZM14.3355 29.379C11.7325 29.3642 9.2034 28.4905 7.14762 26.9061C5.09183 25.3068 3.61284 23.0708 2.9473 20.5534C2.28176 18.0361 2.47402 15.3559 3.46494 12.957C4.47065 10.5581 6.23065 8.54419 8.49349 7.24109L8.4787 11.1356C8.46391 11.2689 8.4787 11.4021 8.50828 11.5354C8.55265 11.6687 8.61181 11.7871 8.70055 11.8908C8.78929 11.9944 8.89282 12.0685 9.02593 12.1277C9.14425 12.1869 9.27735 12.2166 9.41046 12.2166C9.54357 12.2166 9.67668 12.1869 9.795 12.1277C9.91332 12.0685 10.0316 11.9944 10.1204 11.8908C10.2091 11.7871 10.2831 11.6687 10.3126 11.5502C10.357 11.4169 10.3718 11.2837 10.3422 11.1504L10.357 6.36742C11.6585 5.89357 13.034 5.67145 14.4242 5.67145C16.9829 5.67145 19.4676 6.5155 21.4938 8.05553C21.6417 8.17399 21.6565 8.3813 21.5233 8.51458L15.9919 13.5937C15.4891 13.3864 14.9419 13.2679 14.3946 13.2679C13.7883 13.2679 13.1819 13.3864 12.6199 13.6381C12.0578 13.8899 11.5698 14.2601 11.1705 14.7191C10.7711 15.1782 10.4753 15.7261 10.2979 16.3036C10.1204 16.8959 10.076 17.503 10.1647 18.1101C10.2535 18.7173 10.4605 19.2948 10.7859 19.813C11.1113 20.3313 11.555 20.7608 12.0578 21.1013C12.5755 21.4271 13.1523 21.6492 13.7587 21.7381C14.3651 21.8269 14.9862 21.7825 15.563 21.6048L22.6326 26.9801C22.7065 27.0393 22.7509 27.1282 22.7509 27.217L22.7361 29.1124C22.7361 29.2753 22.603 29.4086 22.4403 29.4086L14.3355 29.379ZM16.0659 17.5326C16.0659 17.8584 15.9624 18.1842 15.7849 18.4655C15.5926 18.7469 15.3412 18.9542 15.0306 19.0875C14.72 19.2207 14.3799 19.2503 14.0693 19.1763C13.7587 19.1023 13.4481 18.9542 13.2115 18.7173C12.9748 18.4803 12.8121 18.1842 12.753 17.8584C12.6938 17.5326 12.7234 17.192 12.8565 16.8959C12.9896 16.5849 13.1967 16.3332 13.4777 16.1407C13.7587 15.963 14.0841 15.8593 14.4094 15.8593C14.8531 15.8593 15.282 16.037 15.5926 16.3628C15.8884 16.659 16.0659 17.0736 16.0659 17.5326Z", fill: "white" })
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { width: "13", height: "16", viewBox: "0 0 26 32", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M20.9761 12.5668C22.0114 14.018 22.5734 15.7801 22.5586 17.5571C22.5586 19.3044 21.9966 21.0518 20.9761 22.4733L23.1354 24.117C24.5108 22.2216 25.2651 19.9116 25.2651 17.5719C25.2799 15.099 24.4665 12.6705 22.9727 10.7158L21.7344 11.8321L20.9761 12.5668Z", fill: "#02E2AC" }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M25.0581 25.5733L17.7963 20.05C18.3139 19.3688 18.6097 18.5396 18.6541 17.6807C18.6837 16.8218 18.4618 15.9778 18.0034 15.2522L21.479 12.1129L25.1173 8.70708C25.3539 8.48496 25.3687 8.09995 25.1321 7.86303L24.6292 7.35956C22.041 4.73855 18.5506 3.21333 14.8827 3.09486L14.8975 1.09579C14.9123 0.962517 14.8975 0.829246 14.8679 0.695974C14.8235 0.562703 14.7644 0.444239 14.6756 0.340583C14.5869 0.236927 14.4834 0.162888 14.3503 0.103656C14.232 0.044424 14.0988 0.0148077 13.9657 0.0148077C13.8326 0.0148077 13.6995 0.044424 13.5812 0.103656C13.4629 0.162888 13.3446 0.236927 13.2558 0.340583C13.1671 0.444239 13.0931 0.562702 13.0636 0.681166C13.0192 0.814438 13.0044 0.947709 13.034 1.08098L13.0192 3.13929C12.1466 3.22814 11.274 3.39102 10.431 3.64276L10.4458 1.08098C10.4605 0.947709 10.4458 0.814438 10.4162 0.681166C10.3718 0.547894 10.3126 0.429431 10.2239 0.325775C10.1352 0.222119 10.0316 0.148079 9.89853 0.0888475C9.78021 0.0296157 9.6471 0 9.51399 0C9.38088 0 9.24777 0.0296157 9.12945 0.0888475C9.01114 0.148079 8.89282 0.222119 8.80408 0.325775C8.71534 0.429431 8.64139 0.547894 8.61181 0.666358C8.56744 0.79963 8.55265 0.932902 8.58223 1.06617L8.53786 4.33873C5.55031 5.67145 3.0952 7.9963 1.60142 10.9135C0.107648 13.8306 -0.365626 17.1772 0.285127 20.3906C0.93588 23.6039 2.66629 26.5062 5.18057 28.609C7.69484 30.7117 10.8599 31.8963 14.1284 31.9556L24.7032 32C25.0285 32 25.2948 31.7335 25.2948 31.4077V26.062C25.2948 25.8695 25.206 25.6918 25.0581 25.5733ZM14.3355 29.379C11.7325 29.3642 9.2034 28.4905 7.14762 26.9061C5.09183 25.3068 3.61284 23.0708 2.9473 20.5534C2.28176 18.0361 2.47402 15.3559 3.46494 12.957C4.47065 10.5581 6.23065 8.54419 8.49349 7.24109L8.4787 11.1356C8.46391 11.2689 8.4787 11.4021 8.50828 11.5354C8.55265 11.6687 8.61181 11.7871 8.70055 11.8908C8.78929 11.9944 8.89282 12.0685 9.02593 12.1277C9.14425 12.1869 9.27735 12.2166 9.41046 12.2166C9.54357 12.2166 9.67668 12.1869 9.795 12.1277C9.91332 12.0685 10.0316 11.9944 10.1204 11.8908C10.2091 11.7871 10.2831 11.6687 10.3126 11.5502C10.357 11.4169 10.3718 11.2837 10.3422 11.1504L10.357 6.36742C11.6585 5.89357 13.034 5.67145 14.4242 5.67145C16.9829 5.67145 19.4676 6.5155 21.4938 8.05553C21.6417 8.17399 21.6565 8.3813 21.5233 8.51458L15.9919 13.5937C15.4891 13.3864 14.9419 13.2679 14.3946 13.2679C13.7883 13.2679 13.1819 13.3864 12.6199 13.6381C12.0578 13.8899 11.5698 14.2601 11.1705 14.7191C10.7711 15.1782 10.4753 15.7261 10.2979 16.3036C10.1204 16.8959 10.076 17.503 10.1647 18.1101C10.2535 18.7173 10.4605 19.2948 10.7859 19.813C11.1113 20.3313 11.555 20.7608 12.0578 21.1013C12.5755 21.4271 13.1523 21.6492 13.7587 21.7381C14.3651 21.8269 14.9862 21.7825 15.563 21.6048L22.6326 26.9801C22.7065 27.0393 22.7509 27.1282 22.7509 27.217L22.7361 29.1124C22.7361 29.2753 22.603 29.4086 22.4403 29.4086L14.3355 29.379ZM16.0659 17.5326C16.0659 17.8584 15.9624 18.1842 15.7849 18.4655C15.5926 18.7469 15.3412 18.9542 15.0306 19.0875C14.72 19.2207 14.3799 19.2503 14.0693 19.1763C13.7587 19.1023 13.4481 18.9542 13.2115 18.7173C12.9748 18.4803 12.8121 18.1842 12.753 17.8584C12.6938 17.5326 12.7234 17.192 12.8565 16.8959C12.9896 16.5849 13.1967 16.3332 13.4777 16.1407C13.7587 15.963 14.0841 15.8593 14.4094 15.8593C14.8531 15.8593 15.282 16.037 15.5926 16.3628C15.8884 16.659 16.0659 17.0736 16.0659 17.5326Z", fill: "white" })
   ] });
 };
 
 // src/index.tsx
-var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var Plugin = {
   init: () => {
     return {
       name: "Gitcoin passport",
       description: "Decentralized reputation and Gitcoin passport",
+      requiredMethods: ["dataStoreORMGetIdentifiers"],
       routes: [
         {
           path: "/gitcoin-passport",
-          element: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Feed, {})
+          element: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Feed, {})
         }
       ],
       menuItems: [
         {
           name: "Gitcoin passport",
           path: "/gitcoin-passport",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Icon2, {})
+          icon: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Icon2, {})
         }
       ],
       hasCss: true

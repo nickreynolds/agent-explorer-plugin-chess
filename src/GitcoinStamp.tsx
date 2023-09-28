@@ -4,9 +4,9 @@ import { useVeramo } from '@veramo-community/veramo-react'
 import { useQuery } from 'react-query'
 import { getIssuerDID, shortId } from './utils/did'
 import { UniqueVerifiableCredential } from '@veramo/core'
-import CredentialActionsDropdown from './components/CredentialActionsDropdown'
+import { CredentialActionsDropdown } from '@veramo-community/agent-explorer-plugin'
 import { EllipsisOutlined } from '@ant-design/icons'
-import { formatDistanceToNow, formatRelative } from 'date-fns'
+import { formatRelative } from 'date-fns'
 import { getStampsMetadata } from './apikey'
 
 
@@ -44,7 +44,7 @@ export const GitcoinStamp: React.FC<GitcoinStampProps> = ({
     }}>
       <div style={{position: 'absolute', top: 0, right: 0 }}>
 
-      <CredentialActionsDropdown credential={credential.verifiableCredential}>
+      <CredentialActionsDropdown uniqueCredential={credential}>
         <EllipsisOutlined />
       </CredentialActionsDropdown>
       </div>

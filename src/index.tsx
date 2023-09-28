@@ -1,7 +1,6 @@
 import React from 'react';
-import './style.css'
 
-import { IPlugin } from './types';
+import { IPlugin } from '@veramo-community/agent-explorer-plugin';
 import { Feed } from './Feed'
 import { Icon } from './Icon';
 
@@ -10,6 +9,7 @@ const Plugin: IPlugin = {
         return {
           name: 'Gitcoin passport',
           description: 'Decentralized reputation and Gitcoin passport',
+          requiredMethods: ['dataStoreORMGetIdentifiers'],
           routes: [
             {
               path: '/gitcoin-passport',
