@@ -18,7 +18,7 @@
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
 		"@types/react-router-dom": "^5.3.3",
-		"@veramo-community/agent-explorer-plugin": "^1.41.0",
+		"@veramo-community/agent-explorer-plugin": "^1.44.0",
 		"@veramo-community/veramo-react": "^1.0.82",
 		"@veramo/core": "5.5.2-next.9",
 		"@veramo/core-types": "5.5.2-next.9",

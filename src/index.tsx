@@ -3,6 +3,7 @@ import React from 'react';
 import { IPlugin } from '@veramo-community/agent-explorer-plugin';
 import { Feed } from './Feed'
 import { Icon } from './Icon';
+import { IdentifierHoverComponent } from './IdentifierHoverComponent';
 
 const Plugin: IPlugin = {
     init: () => {
@@ -24,6 +25,7 @@ const Plugin: IPlugin = {
             },
           ],
           hasCss: true,
+          getIdentifierHoverComponent: () => IdentifierHoverComponent,
         }
     }
 };

@@ -21,8 +21,8 @@ devDependencies:
     specifier: ^5.3.3
     version: 5.3.3
   '@veramo-community/agent-explorer-plugin':
-    specifier: ^1.41.0
-    version: 1.41.0(@veramo/remote-client@5.4.2-next.23)(rc-field-form@1.38.0)
+    specifier: ^1.44.0
+    version: 1.44.0(@veramo/remote-client@5.4.2-next.23)(rc-field-form@1.38.0)
   '@veramo-community/veramo-react':
     specifier: ^1.0.82
     version: 1.1.0(@veramo/core@5.5.2-next.9)(@veramo/remote-client@5.4.2-next.23)(react@18.2.0)
@@ -1435,8 +1435,8 @@ packages:
       react: 18.2.0
     dev: true
 
-  /@veramo-community/agent-explorer-plugin@1.41.0(@veramo/remote-client@5.4.2-next.23)(rc-field-form@1.38.0):
-    resolution: {integrity: sha512-GGj3GD9WZxlrmq6UNn3lvfuYKtS5NRKQXhkZnlYFA3ZGof1QvWuRfcn66W5ZpLR7q0ZdsZPpvvnJ/YFmTMrZxw==}
+  /@veramo-community/agent-explorer-plugin@1.44.0(@veramo/remote-client@5.4.2-next.23)(rc-field-form@1.38.0):
+    resolution: {integrity: sha512-FcWzy6ryNV/tss+BvXX3EZmQ00j4ArGdBjqKKREhn0h9gSxoa1BOPgKTajPpkbOcxjVZ1RytuKQLXcbJNAN4hg==}
     dependencies:
       '@ant-design/icons': 5.2.6(react-dom@18.2.0)(react@18.2.0)
       '@ant-design/pro-components': 2.6.21(antd@5.8.6)(rc-field-form@1.38.0)(react-dom@18.2.0)(react@18.2.0)

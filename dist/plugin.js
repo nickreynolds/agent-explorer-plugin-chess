@@ -1670,8 +1670,43 @@ var Icon2 = () => {
   ] });
 };
 
-// src/index.tsx
+// src/IdentifierHoverComponent.tsx
+var import_veramo_react4 = __toESM(require_veramo_react(), 1);
+var import_react_query4 = __toESM(require_react_query(), 1);
+var import_antd4 = __toESM(require_antd(), 1);
 var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
+var getScore = async (address, apiKey) => {
+  const url = `https://api.scorer.gitcoin.co/registry/score/5912/${address}`;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "X-API-KEY": apiKey
+    }
+  });
+  return response.json();
+};
+var IdentifierHoverComponent = ({ did }) => {
+  const { agent } = (0, import_veramo_react4.useVeramo)();
+  const address = did.split(":").pop();
+  const { data: score, isLoading } = (0, import_react_query4.useQuery)(
+    [
+      "identifierScore",
+      did,
+      { agentId: agent?.context.name }
+    ],
+    () => address ? getScore(address, API_KEY) : void 0
+  );
+  console.log("score", score);
+  const str = score?.detail ? score.detail : "no score";
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_antd4.Typography.Text, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Icon2, {}),
+    " score: ",
+    isLoading ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_antd4.Spin, {}) : str
+  ] });
+};
+
+// src/index.tsx
+var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
 var Plugin = {
   init: () => {
     return {
@@ -1681,17 +1716,18 @@ var Plugin = {
       routes: [
         {
           path: "/gitcoin-passport",
-          element: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Feed, {})
+          element: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Feed, {})
         }
       ],
       menuItems: [
         {
           name: "Gitcoin passport",
           path: "/gitcoin-passport",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Icon2, {})
+          icon: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Icon2, {})
         }
       ],
-      hasCss: true
+      hasCss: true,
+      getIdentifierHoverComponent: () => IdentifierHoverComponent
     };
   }
 };
