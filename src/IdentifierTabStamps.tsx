@@ -1,17 +1,17 @@
-/* eslint-disable */
-
-import React, { useMemo } from 'react';
-import { IIdentifierHoverComponentProps } from "@veramo-community/agent-explorer-plugin";
-import { IDataStoreORM, UniqueVerifiableCredential } from '@veramo/core-types';
-import { useVeramo } from '@veramo-community/veramo-react';
-import { useQueries, useQuery } from 'react-query';
-import { Spin, Typography } from 'antd';
+import { useVeramo } from '@veramo-community/veramo-react'
+import { IResolver, UniqueVerifiableCredential } from '@veramo/core-types'
 import { getEthereumAddress, computeEntryHash } from '@veramo/utils'
-import { Icon } from './Icon';
-import { getAddressStamps } from './api';
+import React, { useMemo } from 'react'
+import { useQueries, useQuery } from 'react-query'
+import { getAddressStamps } from './api'
+import { VerifiableCredentialComponent } from '@veramo-community/agent-explorer-plugin'
+import { List } from 'antd'
 
-export const IdentifierHoverComponent: React.FC<IIdentifierHoverComponentProps> = ({did}) => {
-  const { agent } = useVeramo<IDataStoreORM>()
+export const IdentifierTabStamps: React.FC<{ did: string }> = ({
+  did,
+}) => {
+
+  const { agent } = useVeramo<IResolver>()
 
   const { data: resolutionResult, isLoading } = useQuery(
     ['identifier', did],
@@ -56,9 +56,24 @@ export const IdentifierHoverComponent: React.FC<IIdentifierHoverComponentProps> 
   }, [stampQueries])
 
   return (
-    <Typography.Text>
-      <Icon /> stamps: {isLoading ? <Spin /> : stamps.length}
-    </Typography.Text>
+    <List
+      grid={{       
+        gutter: 16,
+        xs: 1,
+        sm: 1,
+        md: 2,
+        lg: 2,
+        xl: 3,
+        xxl: 4,
+        column: 2,
+      }}
+      dataSource={stamps}
+      renderItem={(item) => (
+        <div style={{ margin: 10 }}>
+        <VerifiableCredentialComponent credential={item} context={{ hideHolder: true }} />
+      </div>
+      )}
+    />
   )
 }
 

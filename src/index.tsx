@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { IPlugin } from '@veramo-community/agent-explorer-plugin';
-import { Feed } from './Feed'
-import { Icon } from './Icon';
 import { IdentifierHoverComponent } from './IdentifierHoverComponent';
+import { UniqueVerifiableCredential } from '@veramo/core-types';
+import { GitcoinStamp } from './GitcoinStamp';
+import { IdentifierTabStamps } from './IdentifierTabStamps';
 
 const Plugin: IPlugin = {
     init: () => {
@@ -11,21 +12,24 @@ const Plugin: IPlugin = {
           name: 'Gitcoin passport',
           description: 'Decentralized reputation and Gitcoin passport',
           requiredMethods: ['dataStoreORMGetIdentifiers'],
-          routes: [
-            {
-              path: '/gitcoin-passport',
-              element: <Feed />,
-            },
-          ],
-          menuItems: [
-            {
-              name: 'Gitcoin passport',
-              path: '/gitcoin-passport',
-              icon: <Icon />,
-            },
-          ],
+          routes: [],
+          menuItems: [],
           hasCss: true,
           getIdentifierHoverComponent: () => IdentifierHoverComponent,
+          getCredentialComponent: (credential: UniqueVerifiableCredential) => {
+            if (credential.verifiableCredential.issuer === 'did:key:z6MkghvGHLobLEdj1bgRLhS4LPGJAvbMA1tn2zcRyqmYU5LC') {
+              return GitcoinStamp
+            }
+            return undefined
+          },
+          getIdentifierTabsComponents: () => {
+            return [
+              {
+                label: 'Gitcoin passport',
+                component: IdentifierTabStamps,
+              },
+            ]
+          },
         }
     }
 };

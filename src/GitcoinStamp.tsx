@@ -1,100 +1,69 @@
 import React from 'react'
-import { Row, Avatar, Col, Typography, theme, Skeleton, Space, Popover, List } from 'antd'
-import { useVeramo } from '@veramo-community/veramo-react'
+import { Avatar, Typography, List, Space } from 'antd'
 import { useQuery } from 'react-query'
-import { getIssuerDID, shortId } from './utils/did'
 import { UniqueVerifiableCredential } from '@veramo/core'
-import { CredentialActionsDropdown } from '@veramo-community/agent-explorer-plugin'
-import { EllipsisOutlined } from '@ant-design/icons'
-import { formatRelative } from 'date-fns'
-import { getStampsMetadata } from './apikey'
+import { getStampsMetadata } from './api'
+import { IdentifierProfile } from '@veramo-community/agent-explorer-plugin'
 
 
 interface GitcoinStampProps {
   credential: UniqueVerifiableCredential
+  context?: {
+    hideHolder?: boolean
+  }
 }
 
 export const GitcoinStamp: React.FC<GitcoinStampProps> = ({
-  credential
+  credential,
+  context,
 }) => {
-  const { agent } = useVeramo()
-  const { token } = theme.useToken()
-  
-  const did = getIssuerDID(credential.verifiableCredential)
 
-  const { data, isLoading } = useQuery(
-    ['identifierProfile', did, agent?.context.id],
-    () => (did ? agent?.getIdentifierProfile({ did }) : undefined),
-  )
   const { data: stampMetadata, isLoading: isLoadingMetadata } = useQuery(
-    ['stamp-metadata'],
+    ['stamps-metadata'],
     () => getStampsMetadata(),
   )
 
-  // Not all are available :/
-  const stamp = stampMetadata?.find((stamp: any) => stamp.id === credential.verifiableCredential.credentialSubject.provider)
+  const stamp = React.useMemo(() => {
+    if (!stampMetadata) return undefined
+
+    const provider = credential.verifiableCredential.credentialSubject.provider
+    for (const p of stampMetadata) {
+      for (const g of p.groups) {
+        for (const s of g.stamps) {
+          if (s.name === provider) {
+            return {
+              provider: {
+                name: p.name,
+                description: p.description,
+                icon: p.icon,
+              },
+              group: g.name,
+              name: s.name,
+              description: s.description,
+            }
+          }
+        }
+      }
+    }
+    return undefined
+  }, [stampMetadata, credential.verifiableCredential.credentialSubject.provider])
 
   return (
     <>
-    <Row align="top" wrap={false} style={{
-      width: '100%',
-      borderTop: '1px solid ' + token.colorBorderSecondary,
-      padding: token.paddingSM,
-      position: 'relative'
-    }}>
-      <div style={{position: 'absolute', top: 0, right: 0 }}>
+      {stamp && <Space direction='horizontal'>
+        <img src={stamp.provider.icon} style={{width: 30, marginRight: 10}}/>
+        <div>
+          <Typography.Title level={5}>{stamp.provider.name}</Typography.Title>
+          <Typography.Paragraph>{stamp.group} - {stamp.description}</Typography.Paragraph>        
 
-      <CredentialActionsDropdown uniqueCredential={credential}>
-        <EllipsisOutlined />
-      </CredentialActionsDropdown>
-      </div>
-      <Col style={{ marginRight: token.padding }}>
-        {!isLoading && <Avatar src={data?.picture} size={'large'} />}
-        {isLoading && <Skeleton.Avatar active />}
-      </Col>
-      <Col>
-        <div style={{ justifyItems: 'flex-start', display: 'flex' }}>
-          {!isLoading && (
-            
-            <Popover content={shortId(did)}>
-              <Space direction='horizontal'>
-
-              <Typography.Text ellipsis>
-                {data?.name} 
-              </Typography.Text>
-
-              <svg
-                className="veramo__verified_icon"
-                xmlns="http://www.w3.org/2000/svg" 
-                width="12" 
-                height="12" 
-                viewBox="0 0 1200 1200">
-                <path d="M600,1200a604.428,604.428,0,0,1-120.921-12.19,596.709,596.709,0,0,1-214.545-90.281A601.752,601.752,0,0,1,47.151,833.547,596.971,596.971,0,0,1,12.19,720.921a605.85,605.85,0,0,1,0-241.842A596.709,596.709,0,0,1,102.47,264.534,601.751,601.751,0,0,1,366.453,47.151,596.971,596.971,0,0,1,479.079,12.19a605.85,605.85,0,0,1,241.842,0A596.709,596.709,0,0,1,935.466,102.47a601.751,601.751,0,0,1,217.383,263.982,596.976,596.976,0,0,1,34.961,112.626,605.849,605.849,0,0,1,0,241.842,596.709,596.709,0,0,1-90.281,214.545,601.751,601.751,0,0,1-263.982,217.383,596.976,596.976,0,0,1-112.626,34.961A604.428,604.428,0,0,1,600,1200ZM233.818,499.972l340.917,545.086L967.272,283.377,574.734,684.509Z" fill="#73c394"/>
-              </svg>
-
-              <Typography.Text type='secondary'>·</Typography.Text>
-              
-              <Typography.Text type='secondary'>{formatRelative(
-                new Date(credential.verifiableCredential.issuanceDate),
-                new Date()
-                )}</Typography.Text>
-
-              </Space>
-          </Popover>
-          )}
-          {isLoading && <Skeleton.Input style={{ width: 100 }} active />}
         </div>
-        {stamp && <List.Item><List.Item.Meta 
-          title={stamp.name}
-          description={stamp.description}
-          avatar={<Avatar src={stamp.icon} />}
-        /></List.Item>}
+      </Space>}
 
-        {!stamp && <Typography.Text type='warning'>Stamp metadata not found: {credential.verifiableCredential.credentialSubject.provider}</Typography.Text>}
-        
-      </Col>
-    </Row>
-
+      {!stamp && !isLoadingMetadata && <Typography.Title level={5}>{credential.verifiableCredential.credentialSubject.provider}</Typography.Title>}
+      {!context?.hideHolder && <>
+        <Typography.Title level={5}>Holder</Typography.Title>
+        {!!credential.verifiableCredential.credentialSubject.id && <IdentifierProfile did={credential.verifiableCredential.credentialSubject.id} />}
+      </>}
     </>
   )
 }
