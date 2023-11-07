@@ -57,7 +57,7 @@ export const IdentifierHoverComponent: React.FC<IIdentifierHoverComponentProps> 
 
   return (
     <Typography.Text>
-      <Icon /> stamps: {isLoading ? <Spin /> : stamps.length}
+      <Icon small/> stamps: {isLoading ? <Spin /> : stamps.length}
     </Typography.Text>
   )
 }
