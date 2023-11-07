@@ -5,6 +5,7 @@ import { IdentifierHoverComponent } from './IdentifierHoverComponent';
 import { UniqueVerifiableCredential } from '@veramo/core-types';
 import { GitcoinStamp } from './GitcoinStamp';
 import { IdentifierTabStamps } from './IdentifierTabStamps';
+import { Icon } from './Icon';
 
 const Plugin: IPlugin = {
     init: () => {
@@ -12,6 +13,7 @@ const Plugin: IPlugin = {
           name: 'Gitcoin passport',
           description: 'Decentralized reputation and Gitcoin passport',
           requiredMethods: ['dataStoreORMGetIdentifiers'],
+          icon: <Icon />,
           routes: [],
           menuItems: [],
           hasCss: true,
