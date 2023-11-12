@@ -9184,7 +9184,7 @@ var Icon = ({ small }) => {
 };
 
 // src/api.ts
-var API_KEY = "E3mUPLMY.B7uhtg4a0B1MFtVCTx28lrCezopZET4A";
+var API_KEY = "DsuwjQda.aGaHdjYcq1mwMWnJZZp4YNfuruOfhrRL";
 var getStampsMetadata = async () => {
   const url = `https://api.scorer.gitcoin.co/registry/stamp-metadata`;
   const response = await fetch(url, {
@@ -9271,6 +9271,8 @@ var GitcoinStamp = ({
   );
   const stamp = import_react2.default.useMemo(() => {
     if (!stampMetadata)
+      return void 0;
+    if (stampMetadata.detail === "Error fetching external stamp metadata")
       return void 0;
     const provider = credential.verifiableCredential.credentialSubject.provider;
     for (const p of stampMetadata) {

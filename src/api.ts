@@ -1,7 +1,7 @@
 import { VerifiableCredential } from "@veramo/core-types";
 
 // https://www.scorer.gitcoin.co/#/dashboard/api-keys
-export const API_KEY = 'E3mUPLMY.B7uhtg4a0B1MFtVCTx28lrCezopZET4A'
+export const API_KEY = 'DsuwjQda.aGaHdjYcq1mwMWnJZZp4YNfuruOfhrRL'
 
 type StampMetadataGroup = {
   name: string,

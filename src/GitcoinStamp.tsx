@@ -25,6 +25,8 @@ export const GitcoinStamp: React.FC<GitcoinStampProps> = ({
 
   const stamp = React.useMemo(() => {
     if (!stampMetadata) return undefined
+    //@ts-ignore
+    if (stampMetadata.detail === 'Error fetching external stamp metadata') return undefined
 
     const provider = credential.verifiableCredential.credentialSubject.provider
     for (const p of stampMetadata) {
