@@ -1,49 +1,29 @@
 import { VerifiableCredential } from "@veramo/core-types";
+import { WitnessClient } from "@witnessco/client";
 
-// https://www.scorer.gitcoin.co/#/dashboard/api-keys
-export const API_KEY = 'DsuwjQda.aGaHdjYcq1mwMWnJZZp4YNfuruOfhrRL'
+export const API_KEY = ''
 
-type StampMetadataGroup = {
-  name: string,
-  stamps: Array<{
-    description: string,
-    hash: string,
-    name: string,
-  }>
-}
+export const createWitnessHash = (content: string): `0x${string}`=> {
+  const witness = new WitnessClient(API_KEY)
+  return witness.hash(content)
+} 
 
-type StampMetadata = {
-  id: string,
-  name: string,
-  description: string,
-  icon: string,
-  connectMessage: string,
-  groups: Array<StampMetadataGroup>
-}
-
-
-export const getStampsMetadata = async (): Promise<Array<StampMetadata>> => {
-  const url = `https://api.scorer.gitcoin.co/registry/stamp-metadata`;
-
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'X-API-KEY': API_KEY
-    }
-  });
-
-  return response.json();
+export const getTimestamp = async (leafHash: `0x${string}`): Promise<Date|undefined> => {
+  const witness = new WitnessClient(API)
+  try {  
+    const timestamp = await witness.getTimestampForLeafHash(leafHash);
+    // console.log("timestamp: ", timestamp)
+    return timestamp
+  } catch (ex) {
+    console.log("no timestamp found")
+    await postLeaf(leafHash)
+    return undefined
+  }
 };
 
-export const getAddressStamps = async (address: string): Promise<Array<{version: string, credential: VerifiableCredential}>> => {
-  const url = `https://api.scorer.gitcoin.co/registry/stamps/${address}`;
-
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'X-API-KEY': API_KEY
-    }
-  });
-
-  return (await response.json()).items;
+export const postLeaf = async (leafHash: `0x${string}`): Promise<any> => {
+  const witness = new WitnessClient(API_KEY)
+  const result = await witness.postLeaf(leafHash);
+  console.log("result: ", result)
+  return result
 };

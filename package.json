@@ -1,5 +1,5 @@
 {
-	"name": "@veramo-community/agent-explorer-plugin-gitcoin-passport",
+	"name": "@nickreynolds/agent-explorer-plugin-witness",
 	"repository": "git@github.com:veramolabs/agent-explorer-plugin-gitcoin-passport.git",
 	"author": "Simonas Karuzas <simonas.karuzas@mesh.xyz>",
 	"contributors": [],
@@ -18,11 +18,12 @@
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
 		"@types/react-router-dom": "^5.3.3",
-		"@veramo-community/agent-explorer-plugin": "^1.65.0",
+		"@veramo-community/agent-explorer-plugin": "1.65.0",
 		"@veramo-community/veramo-react": "^1.6.2",
-		"@veramo/core": "5.5.4-next.22",
-		"@veramo/core-types": "5.5.4-next.22",
-		"@veramo/utils": "5.5.4-next.22",
+		"@veramo/core": "6.0.0",
+		"@veramo/core-types": "6.0.0",
+		"@veramo/message-handler": "6.0.0",
+		"@veramo/utils": "6.0.0",
 		"antd": "^5.8.3",
 		"date-fns": "^2.30.0",
 		"esbuild": "^0.19.2",
@@ -34,6 +35,9 @@
 		"typescript": "^5.1.6"
 	},
 	"dependencies": {
-		"ethers": "^6.8.0"
+		"@types/uuid": "^9.0.8",
+		"@witnessco/client": "^0.1.14",
+		"ethers": "^6.8.0",
+		"uuid": "^9.0.1"
 	}
 }

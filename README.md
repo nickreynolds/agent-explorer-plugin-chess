@@ -4,4 +4,4 @@
 
 Use this URL to install this plugin:
 
-`https://cdn.jsdelivr.net/gh/veramolabs/agent-explorer-plugin-gitcoin-passport/dist/plugin.js`
+`https://cdn.jsdelivr.net/gh/nickreynolds/agent-explorer-plugin-witness/dist/plugin.js`
