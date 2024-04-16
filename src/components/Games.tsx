@@ -7,9 +7,9 @@ import { IDataStoreORM } from '@veramo/core'
 import { PlusOutlined } from '@ant-design/icons'
 import { VerifiableCredentialComponent } from '@veramo-community/agent-explorer-plugin'
 import { App, Button, Drawer, List } from 'antd'
-import { PollForm } from './PollForm.js'
+import { CreateChessGame } from './CreateChessGame.js'
 
-export const Polls = () => {
+export const Games = () => {
   const { notification } = App.useApp()
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [pageSize, setPageSize] = React.useState(10)
@@ -22,7 +22,7 @@ export const Polls = () => {
     ['credentialsCount', { agentId: agent?.context.name }],
     () =>
       agent?.dataStoreORMGetVerifiableCredentialsCount({
-        where: [{ column: 'type', value: ['VerifiableCredential,WitnessPollAnnouncement'] }],
+        where: [{ column: 'type', value: ['VerifiableCredential,ChessGameInvite'] }],
       }),
   )
 
@@ -30,7 +30,7 @@ export const Polls = () => {
     ['witness-polls', { agentId: agent?.context.name }],
     () =>
       agent?.dataStoreORMGetVerifiableCredentials({
-        where: [{ column: 'type', value: ['VerifiableCredential,WitnessPollAnnouncement'] }],
+        where: [{ column: 'type', value: ['VerifiableCredential,ChessGameInvite'] }],
         order: [{ column: 'issuanceDate', direction: 'DESC' }],
       }),
   )
@@ -75,21 +75,21 @@ export const Polls = () => {
         }}
         dataSource={credentials}
         renderItem={(item) => (
-          <div style={{marginTop: '20px'}}>
-          <VerifiableCredentialComponent credential={item} />
+          <div style={{marginTop: '20px', marginBottom: '20px', height: '500px', width: '500px'}}>
+            <VerifiableCredentialComponent credential={item} />
           </div>
         )}
       />
 
       <Drawer 
-        title="Compose new post"
+        title="Create new Game"
         placement="right"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen} 
         width={800}
         destroyOnClose={true}
       >
-        <PollForm onOk={handleNewPost}/>
+        <CreateChessGame onOk={handleNewPost}/>
       </Drawer>
     </PageContainer>
   )

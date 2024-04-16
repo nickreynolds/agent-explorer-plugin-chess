@@ -2,49 +2,45 @@ import React from 'react';
 
 import { IPlugin } from '@veramo-community/agent-explorer-plugin';
 import { UniqueVerifiableCredential } from '@veramo/core-types';
-import { WitnessedCredentialHeader } from './components/WitnessedCredentialHeader';
-import { Polls } from './components/Polls';
-import { CredentialActionComponent } from './components/CredentialActionComponent.js';
-import { WitnessPoll } from './components/WitnessPoll.js';
-import { PollPage } from './components/PollPage.js';
+import { Games } from './components/Games';
+import { ChessGame } from './components/ChessGame.js';
+import { ChessGamePage } from './components/ChessGamePage.js';
 import { SketchOutlined } from '@ant-design/icons';
+import { SaveMessageHandler } from './saveMessageHandler.js';
 
 const Plugin: IPlugin = {
     init: () => {
         return {
-          name: 'Witness',
+          name: 'Chess',
           config: {
             enabled: true,
-            url: 'core://witness',
+            url: 'core://chess',
           },
-          description: 'Timestamping',
+          description: 'Chess game plugin',
           requiredMethods: [],
           icon: <SketchOutlined />,
+          messageHandlers: [new SaveMessageHandler()],
           routes: [
             {
-              path: '/witness/polls',
-              element: <Polls />
+              path: '/chess/games',
+              element: <Games />
             },
             {
-              path: '/witness/poll/:hash',
-              element: <PollPage />
+              path: '/chess/games/:hash',
+              element: <ChessGamePage />
             },
           ],
           menuItems: [
             {
-              name: "Witness",
-              path: '/witness/polls',
+              name: "Chess",
+              path: '/chess/games',
               icon: <SketchOutlined />
             }
           ],
           hasCss: true,
-          getCredentialHeaderComponent: (credential: UniqueVerifiableCredential) => {
-            return WitnessedCredentialHeader
-          },
-          getCredentialActionComponents: () => [CredentialActionComponent],
           getCredentialComponent: (credential: UniqueVerifiableCredential) => {
-            if (credential.verifiableCredential.type?.includes('WitnessPollAnnouncement')) {
-              return WitnessPoll
+            if (credential.verifiableCredential.type?.includes('ChessGameInvite')) {
+              return ChessGame
             }
             return undefined
           },

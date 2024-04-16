@@ -10,11 +10,11 @@ import { useEffect } from 'react'
 import { Votes } from './Votes'
 
 
-export const PollPage = () => {
+export const ChessGamePage = () => {
   const { hash } = useParams<{ hash: string }>()
   const { agents, agent } = useVeramo<IDataStore & IDataStoreORM & IDIDManager & IResolver>()
   const [refDrawerOpen, setRefDrawerOpen] = useState(false);
-  const [poll, setPoll] = useState<UniqueVerifiableCredential | null>(null)
+  const [game, setGame] = useState<UniqueVerifiableCredential | null>(null)
 
   const { token } = theme.useToken()
 
@@ -34,10 +34,10 @@ export const PollPage = () => {
     setLoading(true)
     const load = async () => {      
       try {
-        const postCredential = await agent.dataStoreGetVerifiableCredential({ hash })
-        setPoll({ hash, verifiableCredential: postCredential })        
+        const gameCredential = await agent.dataStoreGetVerifiableCredential({ hash })
+        setGame({ hash, verifiableCredential: gameCredential })        
       } catch (e) {
-        console.log("unknown poll.")
+        console.log("unknown game.")
       }
 
       setLoading(false)
@@ -46,7 +46,7 @@ export const PollPage = () => {
   }, [hash, agent])
 
   if (loading) return (<Spin />)
-  if (!poll) return null
+  if (!game) return null
 
   return (
     <PageContainer 
@@ -59,17 +59,12 @@ export const PollPage = () => {
             overflow: 'hidden',
             marginBottom: token.margin
           }}>
-          {poll && <VerifiableCredentialComponent credential={poll} />}
+          {game && <VerifiableCredentialComponent credential={game} />}
           </Col>
-        </Row>
-        <Row>
-          <Button type='text' onClick={() => setRefDrawerOpen(true)}>
-            See votes
-          </Button>
         </Row>
       </ResponsiveContainer>
       <Drawer 
-        title="Posts that reference this one"
+        title="Moves"
         placement="right"
         onClose={() => setRefDrawerOpen(false)}
         open={refDrawerOpen} 

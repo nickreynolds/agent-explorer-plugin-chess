@@ -1,7 +1,7 @@
 {
-	"name": "@nickreynolds/agent-explorer-plugin-witness",
-	"repository": "git@github.com:veramolabs/agent-explorer-plugin-gitcoin-passport.git",
-	"author": "Simonas Karuzas <simonas.karuzas@mesh.xyz>",
+	"name": "@nickreynolds/agent-explorer-plugin-chess",
+	"repository": "git@github.com:nickreynolds/agent-explorer-plugin-chess.git",
+	"author": "Nick Reynolds",
 	"contributors": [],
 	"keywords": [],
 	"license": "Apache-2.0",
@@ -24,7 +24,7 @@
 		"@veramo/core-types": "6.0.0",
 		"@veramo/message-handler": "6.0.0",
 		"@veramo/utils": "6.0.0",
-		"antd": "^5.8.3",
+		"antd": "^5.16.2",
 		"date-fns": "^2.30.0",
 		"esbuild": "^0.19.2",
 		"esbuild-plugin-external-global": "^1.0.1",
@@ -35,9 +35,15 @@
 		"typescript": "^5.1.6"
 	},
 	"dependencies": {
+		"@types/chess.js": "^0.13.7",
 		"@types/uuid": "^9.0.8",
+		"@veramo/did-discovery": "^6.0.0",
 		"@witnessco/client": "^0.1.14",
+		"@yudiel/react-qr-scanner": "^1.1.8",
+		"chess.js": "0.12.1",
 		"ethers": "^6.8.0",
+		"react-chessboard": "^4.5.0",
+		"url-parse": "^1.5.10",
 		"uuid": "^9.0.1"
 	}
 }
