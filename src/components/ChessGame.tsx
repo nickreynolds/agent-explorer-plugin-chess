@@ -3,7 +3,7 @@ import { ICredentialIssuer, IDataStore, IDataStoreORM, UniqueVerifiableCredentia
 import { MarkDown } from "@veramo-community/agent-explorer-plugin";
 import { Table, Tag, Typography, notification, theme } from "antd";
 import { useVeramo } from "@veramo-community/veramo-react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { createWitnessHash, getTimestamp } from "../api.js";
 import { Chess, Piece, Square } from "chess.js";
 import { Chessboard } from "react-chessboard";
@@ -13,11 +13,8 @@ export const ChessGame: React.FC<{credential: UniqueVerifiableCredential, contex
   console.log("ChessGame.")
   const { agent } = useVeramo<IDataStoreORM & IDataStore & ICredentialIssuer>()
   const { token } = theme.useToken()
-  const [validVotes, setValidVotes] = React.useState<string[]>([])
-  const { title, pollOptions } = credential.verifiableCredential.credentialSubject
   const credHash = credential.hash
   const [game, setGame] = React.useState(new Chess());
-
   const { data: moves, refetch } = useQuery(
     [
       'chessMoves',
@@ -43,6 +40,8 @@ export const ChessGame: React.FC<{credential: UniqueVerifiableCredential, contex
       }),
   )
 
+
+
   React.useEffect(() => {
     if (moves) {
       console.log("found moves: ", moves)
@@ -65,6 +64,7 @@ export const ChessGame: React.FC<{credential: UniqueVerifiableCredential, contex
 
   function onDrop(sourceSquare: Square, targetSquare: Square, piece: Piece) {
     const preGameCopy = { ...game }
+    const prevFen = game.fen()
     let issuer = ''
     let opponent = ''
     if (game.turn() === 'b') {
@@ -98,6 +98,7 @@ export const ChessGame: React.FC<{credential: UniqueVerifiableCredential, contex
           credentialSubject: {
             inviteHash: credHash,
             move: move,
+            prevFen
           },
         },
       })
@@ -113,6 +114,11 @@ export const ChessGame: React.FC<{credential: UniqueVerifiableCredential, contex
           to: opponent,
           id: v4(),
           thid: credHash,
+          body: {
+            content: move?.san,
+            prevFen,
+            move
+          },
           attachments: [{
             media_type: 'credential+ld+json',
             data: { json: moveCredential }
@@ -135,7 +141,7 @@ export const ChessGame: React.FC<{credential: UniqueVerifiableCredential, contex
           to: opponent,
           id: shareMessage.id,
           threadId: shareMessage.thid,
-          data: {  },
+          data: { ...shareMessage.body },
           attachments: shareMessage.attachments
         } })
   

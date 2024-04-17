@@ -2798,7 +2798,7 @@ var require_jsx_runtime = __commonJS({
 // node_modules/.pnpm/chess.js@0.12.1/node_modules/chess.js/chess.js
 var require_chess = __commonJS({
   "node_modules/.pnpm/chess.js@0.12.1/node_modules/chess.js/chess.js"(exports2) {
-    var Chess2 = function(fen) {
+    var Chess3 = function(fen) {
       var BLACK = "b";
       var WHITE = "w";
       var EMPTY = -1;
@@ -4642,10 +4642,10 @@ var require_chess = __commonJS({
       };
     };
     if (typeof exports2 !== "undefined")
-      exports2.Chess = Chess2;
+      exports2.Chess = Chess3;
     if (typeof define !== "undefined")
       define(function() {
-        return Chess2;
+        return Chess3;
       });
   }
 });
@@ -31125,8 +31125,6 @@ var ChessGame = ({ credential, context }) => {
   console.log("ChessGame.");
   const { agent } = (0, import_veramo_react3.useVeramo)();
   const { token } = import_antd3.theme.useToken();
-  const [validVotes, setValidVotes] = React9.useState([]);
-  const { title, pollOptions } = credential.verifiableCredential.credentialSubject;
   const credHash = credential.hash;
   const [game, setGame] = React9.useState(new import_chess.Chess());
   const { data: moves, refetch } = (0, import_react_query2.useQuery)(
@@ -31171,6 +31169,7 @@ var ChessGame = ({ credential, context }) => {
   }
   function onDrop(sourceSquare, targetSquare, piece) {
     const preGameCopy = { ...game };
+    const prevFen = game.fen();
     let issuer = "";
     let opponent = "";
     if (game.turn() === "b") {
@@ -31200,7 +31199,8 @@ var ChessGame = ({ credential, context }) => {
           type: ["VerifiableCredential", "ChessGameMove"],
           credentialSubject: {
             inviteHash: credHash,
-            move
+            move,
+            prevFen
           }
         }
       });
@@ -31214,6 +31214,11 @@ var ChessGame = ({ credential, context }) => {
           to: opponent,
           id: (0, import_uuid2.v4)(),
           thid: credHash,
+          body: {
+            content: move?.san,
+            prevFen,
+            move
+          },
           attachments: [{
             media_type: "credential+ld+json",
             data: { json: moveCredential }
@@ -31234,7 +31239,7 @@ var ChessGame = ({ credential, context }) => {
           to: opponent,
           id: shareMessage.id,
           threadId: shareMessage.thid,
-          data: {},
+          data: { ...shareMessage.body },
           attachments: shareMessage.attachments
         } });
         import_antd3.notification.success({
@@ -31467,8 +31472,44 @@ var SaveMessageHandler = class extends AbstractMessageHandler {
   }
 };
 
-// src/index.tsx
+// src/components/ChessMoveMessage.tsx
+var import_antd6 = __toESM(require_antd(), 1);
+var import_chess2 = __toESM(require_chess(), 1);
+var import_react9 = __toESM(require_react(), 1);
+var import_react_router_dom4 = __toESM(require_react_router_dom(), 1);
 var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
+var ChessMoveMessage = ({ message: message2 }) => {
+  const gameId = message2.threadId;
+  const navigate = (0, import_react_router_dom4.useNavigate)();
+  const { prevFen } = message2.data;
+  const [game, setGame] = import_react9.default.useState(new import_chess2.Chess(prevFen));
+  const [moved, setMoved] = import_react9.default.useState(false);
+  (0, import_react9.useEffect)(() => {
+    const animate = async () => {
+      if (moved) {
+        game.undo();
+        setGame(game);
+        setMoved(false);
+      } else {
+        game.move(message2.data.move);
+        setGame(game);
+        setMoved(true);
+      }
+    };
+    const interval = setInterval(() => animate(), 1e3);
+    return () => clearInterval(interval);
+  });
+  console.log("show chessboard.");
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { minWidth: 300, minHeight: 300 }, children: [
+    "Move: ",
+    message2.data?.content,
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Chessboard, { position: game.fen() }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_antd6.Button, { onClick: () => navigate(`/chess/games/${gameId}`), children: "View Game" })
+  ] });
+};
+
+// src/index.tsx
+var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
 var Plugin = {
   init: () => {
     return {
@@ -31479,29 +31520,36 @@ var Plugin = {
       },
       description: "Chess game plugin",
       requiredMethods: [],
-      icon: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SketchOutlined_default2, {}),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SketchOutlined_default2, {}),
       messageHandlers: [new SaveMessageHandler()],
       routes: [
         {
           path: "/chess/games",
-          element: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Games, {})
+          element: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Games, {})
         },
         {
           path: "/chess/games/:hash",
-          element: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ChessGamePage, {})
+          element: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ChessGamePage, {})
         }
       ],
       menuItems: [
         {
           name: "Chess",
           path: "/chess/games",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SketchOutlined_default2, {})
+          icon: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SketchOutlined_default2, {})
         }
       ],
       hasCss: true,
       getCredentialComponent: (credential) => {
         if (credential.verifiableCredential.type?.includes("ChessGameInvite")) {
           return ChessGame;
+        }
+        return void 0;
+      },
+      supportedChatMessages: [CHESS_INVITE_MESSAGE_TYPE, CHESS_MOVE_MESSAGE_TYPE],
+      getMessageComponent: (message2) => {
+        if (message2.type === CHESS_MOVE_MESSAGE_TYPE) {
+          return ChessMoveMessage;
         }
         return void 0;
       }
