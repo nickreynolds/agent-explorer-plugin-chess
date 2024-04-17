@@ -9,6 +9,7 @@ import { SketchOutlined } from '@ant-design/icons';
 import { SaveMessageHandler } from './saveMessageHandler.js';
 import { CHESS_INVITE_MESSAGE_TYPE, CHESS_MOVE_MESSAGE_TYPE } from './constants.js';
 import { ChessMoveMessage } from './components/ChessMoveMessage.js';
+import { ChessInviteMessage } from './components/ChessInviteMessage.js';
 
 const Plugin: IPlugin = {
     init: () => {
@@ -48,9 +49,9 @@ const Plugin: IPlugin = {
         },
         supportedChatMessages: [CHESS_INVITE_MESSAGE_TYPE, CHESS_MOVE_MESSAGE_TYPE],
         getMessageComponent: (message: IMessage) => {
-          //if (message.type === CHESS_INVITE_MESSAGE_TYPE) {
-          //  return () => <div>Chess invite message</div>
-          //}
+          if (message.type === CHESS_INVITE_MESSAGE_TYPE) {
+            return ChessInviteMessage
+          }
           if (message.type === CHESS_MOVE_MESSAGE_TYPE) {
             return ChessMoveMessage
           }

@@ -2798,7 +2798,7 @@ var require_jsx_runtime = __commonJS({
 // node_modules/.pnpm/chess.js@0.12.1/node_modules/chess.js/chess.js
 var require_chess = __commonJS({
   "node_modules/.pnpm/chess.js@0.12.1/node_modules/chess.js/chess.js"(exports2) {
-    var Chess3 = function(fen) {
+    var Chess4 = function(fen) {
       var BLACK = "b";
       var WHITE = "w";
       var EMPTY = -1;
@@ -4642,10 +4642,10 @@ var require_chess = __commonJS({
       };
     };
     if (typeof exports2 !== "undefined")
-      exports2.Chess = Chess3;
+      exports2.Chess = Chess4;
     if (typeof define !== "undefined")
       define(function() {
-        return Chess3;
+        return Chess4;
       });
   }
 });
@@ -31508,8 +31508,23 @@ var ChessMoveMessage = ({ message: message2 }) => {
   ] });
 };
 
-// src/index.tsx
+// src/components/ChessInviteMessage.tsx
+var import_antd7 = __toESM(require_antd(), 1);
+var import_chess3 = __toESM(require_chess(), 1);
+var import_react_router_dom5 = __toESM(require_react_router_dom(), 1);
 var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
+var ChessInviteMessage = ({ message: message2 }) => {
+  const gameId = message2.threadId;
+  const navigate = (0, import_react_router_dom5.useNavigate)();
+  const game = new import_chess3.Chess();
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { minWidth: 300, minHeight: 300 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Chessboard, { position: game.fen() }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_antd7.Button, { onClick: () => navigate(`/chess/games/${gameId}`), children: "View Game" })
+  ] });
+};
+
+// src/index.tsx
+var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
 var Plugin = {
   init: () => {
     return {
@@ -31520,23 +31535,23 @@ var Plugin = {
       },
       description: "Chess game plugin",
       requiredMethods: [],
-      icon: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SketchOutlined_default2, {}),
+      icon: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(SketchOutlined_default2, {}),
       messageHandlers: [new SaveMessageHandler()],
       routes: [
         {
           path: "/chess/games",
-          element: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Games, {})
+          element: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Games, {})
         },
         {
           path: "/chess/games/:hash",
-          element: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ChessGamePage, {})
+          element: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ChessGamePage, {})
         }
       ],
       menuItems: [
         {
           name: "Chess",
           path: "/chess/games",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SketchOutlined_default2, {})
+          icon: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(SketchOutlined_default2, {})
         }
       ],
       hasCss: true,
@@ -31548,6 +31563,9 @@ var Plugin = {
       },
       supportedChatMessages: [CHESS_INVITE_MESSAGE_TYPE, CHESS_MOVE_MESSAGE_TYPE],
       getMessageComponent: (message2) => {
+        if (message2.type === CHESS_INVITE_MESSAGE_TYPE) {
+          return ChessInviteMessage;
+        }
         if (message2.type === CHESS_MOVE_MESSAGE_TYPE) {
           return ChessMoveMessage;
         }
